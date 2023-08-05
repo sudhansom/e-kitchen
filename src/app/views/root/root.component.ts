@@ -25,6 +25,6 @@ export class RootComponent {
       ...item,
       color: borderColor,
     }
-  });
+  }).sort((a,b) => a.amount - b.amount);
 
 }
