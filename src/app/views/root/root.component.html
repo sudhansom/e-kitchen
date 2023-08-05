@@ -1,3 +1,9 @@
 <div class="container">
   <h1>My Kitchen</h1>
+  <hr>
+  <div class="all-stuffs">
+    <div *ngFor="let item of data" [title]="item.name" [style.--amount-color]="item.color" class="image">
+      <img [src]="item.image" alt="">
+    </div>
+  </div>
 </div>
