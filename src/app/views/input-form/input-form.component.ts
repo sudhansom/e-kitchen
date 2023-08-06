@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ImageUploadService } from 'src/app/services/image-upload.service';
+import { DataService } from 'src/app/services/data.service';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class InputFormComponent implements OnInit {
 
 
 
-  constructor(private imageUploadService: ImageUploadService) {}
+  constructor(private dataService: DataService) {}
 
   onFileSelected(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
@@ -37,10 +37,11 @@ export class InputFormComponent implements OnInit {
       this.reactiveForm.value.image = this.imageUrl;
       const newObject = {
         image: this.imageUrl,
-        name: this.reactiveForm.value.explanation,
+        name: this.reactiveForm.value.name,
         amount: this.reactiveForm.value.amount,
+      }
+      this.dataService.uploadData(newObject).subscribe(console.log);
     }
-  }
   }
 
 

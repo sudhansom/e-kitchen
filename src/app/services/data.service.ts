@@ -5,15 +5,14 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ImageUploadService {
-  private apiUrl = 'https://angular-project-866ab-default-rtdb.europe-west1.firebasedatabase.app/driving.json'; // Replace this with your server API URL
+export class DataService {
+  private apiUrl = 'https://angular-project-866ab-default-rtdb.europe-west1.firebasedatabase.app/akitchen.json'; // Replace this with your server API URL
 
   constructor(private http: HttpClient) {}
 
-  uploadForm(form: any): Observable<any> {
+  uploadData(form: any): Observable<any> {
     console.log(form.image);
     return this.http.post<any>(`${this.apiUrl}`, form);
-    // return of('')
   }
   getFormData(){
     return this.http.get<any>(`${this.apiUrl}`);
