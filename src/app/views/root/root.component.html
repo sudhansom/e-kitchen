@@ -2,8 +2,19 @@
   <h1>My Kitchen</h1>
   <hr>
   <div class="all-stuffs">
-    <div *ngFor="let item of data" [title]="item.name + '  ' + item.amount + '%'" [style.--amount-color]="item.color" class="image">
-      <img [src]="item.image" alt="">
+    <div
+      (click)="showProgressBar(item.name)"
+      *ngFor="let item of data"
+      [style.--background-image]="'url(' + item.image + ')'"
+      [title]="item.name + '  ' + item.amount + '%'" [style.--amount-color]="item.color" class="image">
+      <!-- <input (input)="changeAmount(item.name, $event)" type="range" *ngIf="item?.showProgress" [value]="item.amount" min="0" max="100" /> -->
+      <div class="amount" *ngIf="item?.showProgress" >
+        <div (click)="changeAmount(item.name, 100)" style="background-color: green;" class="green each"></div>
+        <div (click)="changeAmount(item.name, 70)" style="background-color: orange;" class="orange each"></div>
+        <div (click)="changeAmount(item.name, 30)" style="background-color: purple;"  class="purple each"></div>
+        <div (click)="changeAmount(item.name, 5)" style="background-color: red;"  class="red each"></div>
+      </div>
     </div>
   </div>
 </div>
+

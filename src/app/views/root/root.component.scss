@@ -4,6 +4,8 @@
     padding: 0;
     margin: 0;
   }
+  --amount-color-0: rgba(var(--amount-color), .01);
+  --amount-color-10: rgba(var(--amount-color), .1);
   .container {
     max-width: 700px;
     margin: auto;
@@ -11,27 +13,51 @@
     border-radius: 12px;
     padding: 20px;
     h1 {
-      font-size: var(--large-font-size, 76px);
+      font-size: var(--large-font-size, 36px);
       line-height: 1.1;
       font-weight: bold;
       text-align: center;
     }
     hr {
       margin-block: 20px;
+      width: 100%;
+      height: 5px;
+      border-radius: 9px;
+      background: linear-gradient(to right, red, red 10%, purple 11%, purple 40%, orange 41%, orange 75%, green 76%, green 100%);
+
     }
     .all-stuffs {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       .image {
-        max-width: 200px;
+        position: relative;
+        background-image:var(--background-image);
+        background-size: cover;
+        aspect-ratio: 1.5;
+
         border: 5px solid var(--amount-color, gray);
         border-radius: 7px;
         cursor: pointer;
-        img {
-          width: 100%;
+        transition: all .9s ease-in-out;
+        &:hover {
+          background: linear-gradient(to right, var(--amount-color-0), var(--amount-color-10)), var(--background-image);
+          background-size: cover;
+          scale: 1.02;
+        }
+        .amount {
+          width: 7px;
+          height: 100%;
+          background: red;
+          margin-left: 2px;
+          .each {
+            height: 25%;
+          }
         }
       }
     }
+  }
+  progress {
+    position: absolute;
   }
 }

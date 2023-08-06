@@ -1,0 +1,51 @@
+:host {
+  form {
+    max-width: 500px;
+    margin: auto;
+    background-color: rgb(222, 217, 217);
+    border-radius: 9px;
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    input, button {
+      padding: 9px;
+      border: none;
+      border-radius: 9px;
+    }
+    .answer {
+      flex-direction: row;
+      label {
+        flex-direction: row;
+      }
+    }
+    .more-options {
+      margin: 0;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        color: green;
+      }
+    }
+
+    button {
+      cursor: pointer;
+      margin: 12px 0 ;
+      transition: all .6s ease-in-out;
+      &:hover {
+        background-color: rgb(183, 174, 174);
+      }
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+}

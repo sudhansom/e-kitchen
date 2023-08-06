@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="reactiveForm">
+  <label>Image url:
+    <input type="file" (change)="onFileSelected($event)" formControlName="image" accept="image/*" />
+  </label>
+  <label>name:
+    <input type="text" value="name" formControlName="name" />
+  </label>
+  <label>amount:
+    <input type="number" formControlName="amount" />
+  </label>
+  <div *ngIf="imageUrl">
+    <img [src]="imageUrl" alt="">
+  </div>
+  <button type="submit">Submit</button>
+</form>
