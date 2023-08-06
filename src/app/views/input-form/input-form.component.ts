@@ -40,7 +40,10 @@ export class InputFormComponent implements OnInit {
         name: this.reactiveForm.value.name,
         amount: this.reactiveForm.value.amount,
       }
-      this.dataService.uploadData(newObject).subscribe(console.log);
+      this.dataService.uploadData(newObject).subscribe(data => {
+        this.reactiveForm.reset();
+        this.imageUrl=null;
+      });
     }
   }
 

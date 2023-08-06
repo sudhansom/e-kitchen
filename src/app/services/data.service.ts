@@ -17,4 +17,7 @@ export class DataService {
   getFormData(){
     return this.http.get<any>(`${this.apiUrl}`);
   }
+  updateData(item: any){
+    return this.http.put<any>(`https://angular-project-866ab-default-rtdb.europe-west1.firebasedatabase.app/akitchen/${item.id}.json`, item);
+  }
 }

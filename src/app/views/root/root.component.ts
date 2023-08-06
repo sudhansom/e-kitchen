@@ -9,6 +9,7 @@ interface IData {
   image: string,
   showProgress?: boolean,
   color?: string,
+  id?: string,
 }
 @Component ({
   selector: 'app-root',
@@ -41,29 +42,17 @@ export class RootComponent implements OnInit {
     })
   }
 
-  changeAmount(name: string, amount: number){
-    this.data = this.data.map(item => {
-      if(item.name === name){
-        return {
-          ...item,
-          amount,
-        }
-      }
-      else {
-        return {
-          ...item
-        }
-      }
+  changeAmount(item: IData, amount: number){
+    this.dataService.updateData({...item, amount: amount}).subscribe(data => {
+      this.fetchData();
     })
   }
 
-  constructor(private dataService: DataService){}
-
-  ngOnInit(): void {
+  fetchData(){
     this.dataService.getFormData().subscribe(data => {
       let rawData = [];
       for(let key in data){
-        rawData.push(data[key]);
+        rawData.push({...data[key], id:key});
       }
       this.data = rawData.map(item => {
         let borderColor = '';
@@ -75,7 +64,7 @@ export class RootComponent implements OnInit {
         else if(item.amount <= 40 && item.amount > 10){
           borderColor = 'purple';
         }else {
-          borderColor = '#880808';
+          borderColor = '	#EE4B2B';
         }
         return {
           ...item,
@@ -86,4 +75,9 @@ export class RootComponent implements OnInit {
     })
   }
 
+  constructor(private dataService: DataService){}
+
+  ngOnInit(): void {
+    this.fetchData();
+  }
 }

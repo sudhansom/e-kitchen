@@ -17,6 +17,10 @@
       line-height: 1.1;
       font-weight: bold;
       text-align: center;
+      background: linear-gradient(to right, #f32170,  #f32170, #f32170,
+                     #cf23cf, #cf23cf, #eedd44, #eedd44,  #0aba27, #0aba27,  #0aba27,    #333);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
     }
     hr {
       margin-block: 20px;
@@ -28,7 +32,10 @@
     }
     .all-stuffs {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      @media(min-width: 768px){
+        grid-template-columns: repeat(3, 1fr);
+      }
       gap: 12px;
       .image {
         position: relative;
@@ -41,7 +48,7 @@
         cursor: pointer;
         transition: all .9s ease-in-out;
         &:hover {
-          background: linear-gradient(to right, var(--amount-color-0), var(--amount-color-10)), var(--background-image);
+          //background: linear-gradient(to right, var(--amount-color-0), var(--amount-color-10)), var(--background-image);
           background-size: cover;
           scale: 1.02;
         }
@@ -49,7 +56,6 @@
           width: 7px;
           height: 100%;
           background: red;
-          margin-left: 2px;
           .each {
             height: 25%;
           }
