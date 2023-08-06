@@ -10,6 +10,8 @@ interface IData {
   showProgress?: boolean,
   color?: string,
   id?: string,
+  date: bigint,
+  category?: string,
 }
 @Component ({
   selector: 'app-root',
@@ -43,7 +45,7 @@ export class RootComponent implements OnInit {
   }
 
   changeAmount(item: IData, amount: number){
-    this.dataService.updateData({...item, amount: amount}).subscribe(data => {
+    this.dataService.updateData({...item, amount: amount, date: Date.now()}).subscribe(data => {
       this.fetchData();
     })
   }
@@ -55,6 +57,26 @@ export class RootComponent implements OnInit {
         rawData.push({...data[key], id:key});
       }
       this.data = rawData.map(item => {
+        let date = Date.now();
+       let day  = Math.floor(Math.abs(date - item.date)/(1000 * 60 * 60 * 24));
+        console.log(day);
+        if(item.category === 'one'){
+          return {
+            ...item,
+            amount: item.amount - day * 10,
+          }
+        }else if(item.category == 'two'){
+          return {
+            ...item,
+            amount: item.amount - day *  5,
+          }
+        }else {
+          return {
+            ...item,
+            amount: item.amount - day * 3,
+          }
+        }
+      }).map(item => {
         let borderColor = '';
         if(item.amount > 75){
           borderColor = 'green';

@@ -8,8 +8,17 @@
   <label>amount:
     <input type="number" formControlName="amount" />
   </label>
+  <label>Category:
+    <select type="number" formControlName="category">
+      <option value=""></option>
+      <option value="one">one</option>
+      <option value="two">two</option>
+      <option value="three">three</option>
+    </select>
+  </label>
   <div *ngIf="imageUrl">
     <img [src]="imageUrl" alt="">
   </div>
   <button type="submit">Submit</button>
+  <!-- <p>{{reactiveForm.value | json}}</p> -->
 </form>

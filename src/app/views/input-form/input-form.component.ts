@@ -39,6 +39,7 @@ export class InputFormComponent implements OnInit {
         image: this.imageUrl,
         name: this.reactiveForm.value.name,
         amount: this.reactiveForm.value.amount,
+        category: this.reactiveForm.value.category,
       }
       this.dataService.uploadData(newObject).subscribe(data => {
         this.reactiveForm.reset();
@@ -53,6 +54,7 @@ export class InputFormComponent implements OnInit {
       image: new FormControl(this.imageUrl),
       name: new FormControl(null),
       amount: new FormControl(0),
+      category: new FormControl(''),
     })
   }
 }
