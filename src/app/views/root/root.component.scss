@@ -38,6 +38,7 @@
       }
       gap: 12px;
       .image {
+        height: 110px;
         background-image:var(--background-image);
         background-size: cover;
         aspect-ratio: 1.5;
@@ -53,8 +54,9 @@
           scale: 1.02;
         }
         .amount {
-          height: 12%;
+          height: 15%;
           display: flex;
+          gap: 2px;
           margin: 50px auto;
           .each {
             width: 25%;
