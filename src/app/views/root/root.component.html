@@ -1,7 +1,8 @@
 <div class="container">
   <h1>My Kitchen</h1>
   <hr>
-  <div class="all-stuffs">
+  <h2 *ngIf="!data.length">Loading...</h2>
+  <div class="all-stuffs" *ngIf="data.length">
     <div
       (click)="showProgressBar(item.name)"
       *ngFor="let item of data"
