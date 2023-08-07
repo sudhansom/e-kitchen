@@ -29,6 +29,7 @@
 
     }
     .all-stuffs {
+      position: relative;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       @media(min-width: 768px){
@@ -64,6 +65,16 @@
             border-radius: 7px;
           }
         }
+      }
+      .update {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        padding: 12px;
+        border-radius: 12px;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: rgba(254, 254, 254, .7);
       }
     }
     .link {

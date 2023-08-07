@@ -23,6 +23,8 @@ interface IData {
 export class RootComponent implements OnInit {
 
   showAmount = signal(false);
+  updated = signal(false);
+
   mySlider = 0;
 
   data: IData[] = [];
@@ -45,6 +47,10 @@ export class RootComponent implements OnInit {
   }
 
   changeAmount(item: IData, amount: number){
+    this.updated.set(true);
+    setTimeout(()=>{
+      this.updated.set(false);
+    }, 1500)
     this.dataService.updateData({...item, amount: amount, date: Date.now()}).subscribe(data => {
       this.fetchData();
     })

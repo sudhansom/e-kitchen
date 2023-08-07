@@ -16,6 +16,7 @@
         <div (click)="changeAmount(item, 100)" style="background-color: green;" class="green each"></div>
       </div>
     </div>
+    <p class="update" *ngIf="updated()" >item upadated...</p>
   </div>
   <div class="link">
     <a href="/i">Add Item</a>
