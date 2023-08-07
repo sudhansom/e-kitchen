@@ -38,7 +38,10 @@
       }
       gap: 12px;
       .image {
-        height: 140px;
+        height: 90px;
+        @media(min-width: 400px){
+          height: 140px;
+        }
         background-image:var(--background-image);
         background-size: cover;
         aspect-ratio: 1.5;
@@ -62,6 +65,19 @@
             height: 100%;
             border-radius: 7px;
           }
+        }
+      }
+    }
+    .link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 20px;
+      a {
+        text-decoration: none;
+        color: #456;
+        &:visited {
+          color: #123456;
         }
       }
     }
