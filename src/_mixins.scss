@@ -1,0 +1,18 @@
+@mixin defineBaseVariables($colors){
+  @each $name, $color in $colors {
+    --#{$name}-color: #{$color};
+  }
+}
+
+@function tint($color, $percentage){
+  @return mix(#fff, $color, $percentage);
+}
+
+@mixin defineTintColorVariables($colors){
+  @each $name, $color in $colors {
+    $i: 0;
+    $j: 50;
+    --#{$name}-color-#{$i}: #{tint($color, $i)};
+    --#{$name}-color-#{$j}: #{tint($color, $j)};
+  }
+}

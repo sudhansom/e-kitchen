@@ -79,14 +79,14 @@ export class RootComponent implements OnInit {
       }).map(item => {
         let borderColor = '';
         if(item.amount > 75){
-          borderColor = 'green';
+          borderColor = 'var(--full-color)';
         }else if(item.amount <= 75 && item.amount > 40){
-          borderColor = 'orange';
+          borderColor = 'var(--okay-color)';
         }
         else if(item.amount <= 40 && item.amount > 10){
-          borderColor = 'purple';
+          borderColor = 'var(--less-color)';
         }else {
-          borderColor = '	#EE4B2B';
+          borderColor = 'var(--empty-color)';
         }
         return {
           ...item,
