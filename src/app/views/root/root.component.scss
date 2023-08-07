@@ -70,11 +70,13 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        padding: 12px;
+        transform: translate(-50%, -50%);
+        padding: 12px 20px;
         border-radius: 12px;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: bold;
-        background-color: rgba(254, 254, 254, .7);
+        background-color: rgba(25, 25, 25, .7);
+        color: #fff;
       }
     }
     .link {
