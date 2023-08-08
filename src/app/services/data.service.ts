@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class DataService {
-  private apiUrl = 'https://angular-project-866ab-default-rtdb.europe-west1.firebasedatabase.app/akitchen.json'; // Replace this with your server API URL
+  private apiUrl = 'https://angular-project-cf39b-default-rtdb.europe-west1.firebasedatabase.app/akitchen.json'; // Replace this with your server API URL
 
   constructor(private http: HttpClient) {}
 
@@ -18,6 +18,6 @@ export class DataService {
     return this.http.get<any>(`${this.apiUrl}`);
   }
   updateData(item: any){
-    return this.http.put<any>(`https://angular-project-866ab-default-rtdb.europe-west1.firebasedatabase.app/akitchen/${item.id}.json`, item);
+    return this.http.put<any>(`https://angular-project-cf39b-default-rtdb.europe-west1.firebasedatabase.app/akitchen/${item.id}.json`, item);
   }
 }
