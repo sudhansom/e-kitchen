@@ -6,8 +6,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class DataService {
-  private apiUrl1 = 'https://angular-project-a935c-default-rtdb.europe-west1.firebasedatabase.app/akitchen.json'; // Replace this with your server API URL
-  private apiUrl = 'http://localhost:5001/api/products'
+  private apiUrl = 'https://backend-ekitchen-production.up.railway.app/api/products'
 
   constructor(private http: HttpClient) {}
 
