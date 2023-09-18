@@ -6,8 +6,8 @@
     <div
       (click)="showProgressBar(item.name)"
       *ngFor="let item of data"
-      [style.--background-image]="'url(' + item.image + ')'"
-      [title]="item.name + '  ' + item.amount + '%'" [style.--amount-color]="item.color" class="image">
+      [style.--background-image]="'url( ' + 'http://localhost:5001/' +  item.image + ')'"
+      [title]="item.name + '  ' + item.quantity + '%'" [style.--amount-color]="item.color" class="image">
       <!-- <input (input)="changeAmount(item.name, $event)" type="range" *ngIf="item?.showProgress" [value]="item.amount" min="0" max="100" /> -->
       <div class="amount" *ngIf="item?.showProgress" >
         <div (click)="changeAmount(item, 5)" style="background-color: red;"  class="red each"></div>

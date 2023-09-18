@@ -6,18 +6,19 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class DataService {
-  private apiUrl = 'https://my-portfolio-bhuwan-default-rtdb.firebaseio.com/akitchen.json'; // Replace this with your server API URL
+  private apiUrl1 = 'https://angular-project-a935c-default-rtdb.europe-west1.firebasedatabase.app/akitchen.json'; // Replace this with your server API URL
+  private apiUrl = 'http://localhost:5001/api/products'
 
   constructor(private http: HttpClient) {}
 
   uploadData(form: any): Observable<any> {
-    console.log(form.image);
+    console.log('my image..',form.image);
     return this.http.post<any>(`${this.apiUrl}`, form);
   }
   getFormData(){
     return this.http.get<any>(`${this.apiUrl}`);
   }
   updateData(item: any){
-    return this.http.put<any>(`https://angular-project-cf39b-default-rtdb.europe-west1.firebasedatabase.app/akitchen/${item.id}.json`, item);
+    return this.http.put<any>(`${this.apiUrl}/${item._id}`, item);
   }
 }

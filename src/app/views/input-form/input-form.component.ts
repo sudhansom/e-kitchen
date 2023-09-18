@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 
+interface IData {
+  name: string,
+  quantity: number,
+  category: string,
+  image: File,
+}
 
 @Component({
   selector: 'app-input-form',
@@ -25,23 +31,28 @@ export class InputFormComponent implements OnInit {
     if (inputElement.files && inputElement.files.length > 0) {
       this.selectedFile = inputElement.files[0];
       var reader = new FileReader();
-      reader.readAsDataURL(this.selectedFile);
       reader.onload = (event: any) => {
         this.imageUrl = event.target.result;
       }
+      reader.readAsDataURL(this.selectedFile);
     }
   }
 
   onSubmit(): void {
     if (this.selectedFile) {
-      this.reactiveForm.value.image = this.imageUrl;
-      const newObject = {
-        image: this.imageUrl,
-        name: this.reactiveForm.value.name,
-        amount: this.reactiveForm.value.amount,
-        category: this.reactiveForm.value.category,
-      }
-      this.dataService.uploadData(newObject).subscribe(data => {
+      const formData = new FormData();
+      formData.append('image', this.selectedFile);
+      formData.append('name', this.reactiveForm.value.name);
+      formData.append('quantity', this.reactiveForm.value.quantity);
+      formData.append('category', this.reactiveForm.value.category);
+      // this.reactiveForm.value.image = this.imageUrl;
+      // const newObject = {
+      //   image: this.selectedFile,
+      //   name: this.reactiveForm.value.name,
+      //   quantity: this.reactiveForm.value.amount,
+      //   category: this.reactiveForm.value.category,
+      // }
+      this.dataService.uploadData(formData).subscribe(data => {
         this.reactiveForm.reset();
         this.imageUrl=null;
       });
@@ -53,7 +64,7 @@ export class InputFormComponent implements OnInit {
     this.reactiveForm = new FormGroup({
       image: new FormControl(this.imageUrl),
       name: new FormControl(null),
-      amount: new FormControl(0),
+      quantity: new FormControl(0),
       category: new FormControl(''),
     })
   }
